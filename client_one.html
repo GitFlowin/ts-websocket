@@ -8,7 +8,12 @@
 </head>
 <body>
     <h1>Client 1️⃣</h1>
-    <input type="button" onclick=sendMessage() value="Send Message">
+    <input type="text" id="message" name="message" placeholder="Type a message"/>
+    <input 
+        type="button" 
+        value="Send Message"
+        onclick="sendMessage(document.getElementById('message').value);" 
+    />
 </body>
 <script>
     // Websocket server connection
@@ -22,8 +27,8 @@
         console.log(`Message from server: ${event.data}`);
     })
 
-    const sendMessage = () => {
-        ws.send("Sent from Client 1");
+    const sendMessage = (message) => {
+        ws.send(message);
     }
 </script>
 </html>
